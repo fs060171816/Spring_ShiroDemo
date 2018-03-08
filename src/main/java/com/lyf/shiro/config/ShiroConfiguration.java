@@ -53,6 +53,17 @@ public class ShiroConfiguration {
 
     @Bean
     public SecurityManager securityManager(){
-        return new DefaultWebSecurityManager();
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        securityManager.setRealm(myShiroRealm());
+        return securityManager;
+    }
+
+    /***
+     * 身份认证realm
+     * @return
+     */
+    @Bean
+    public MyShiroRealm myShiroRealm(){
+        return new MyShiroRealm();
     }
 }
